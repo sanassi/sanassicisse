@@ -1,0 +1,19 @@
+.experiences {
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.experience-label {
+    color: var(--text-color);
+    font-size: 30px;
+}
+
+.resume-link {
+    color: var(--emph-text-color);
+}
+
+.resume-link a {
+    color: inherit;
+}

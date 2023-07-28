@@ -1,0 +1,12 @@
+.spotify-label {
+    color: var(--text-color);
+    font-size: 30px;
+}
+
+.spotify-link {
+    padding: 1em;
+}
+
+iframe {
+    min-width: fit-content;
+}

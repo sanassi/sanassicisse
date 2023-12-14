@@ -27,17 +27,17 @@ export default function Projects() {
                        "site":"github",
                        "url":"https://github.com/sanassi/red-panda"}} />
         <ProjectInfo name="PixElArt"
-                     lang={["Javascript"]}
-                     description={['Pixel Art Editor', 'Built with Vanilla Javascript']}
+                     lang={["Javascript", "React"]}
+                     description={['Pixel Art Editor', 'Built with ReactJS']}
                      link={{
                        "site":"github",
-                       "url":"https://github.com/sanassi/pixElArt"}} />
+                       "url":"https://github.com/sanassi/pixelart-react"}} />
         <ProjectInfo name="Portfolio Website"
                      lang={["ReactJS"]}
                      description={["First iteration of my portfolio website"]}
                      link={{
                        "site":"github",
-                       "url":"https://github.com/sanassi/random-stuff"}} />
+                       "url":"https://github.com/sanassi/sanassicisse"}} />
       </div>
     </div>
   );

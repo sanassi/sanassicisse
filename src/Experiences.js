@@ -15,10 +15,11 @@ export default function Experiences() {
                     company='Epita'
                     techs={['Java', 'C++', 'Javascript']}/>
         <Experience duration={{'start' : 'Sept. 2023', 'end' : 'Jan. 2024'}}
-                    title='(Upcoming) Backend Developer Intern'
-                    description={['']}
+                    title='Backend Developer Intern'
+                    description={['Added features and optimizations on the monolithic server',
+                    'Worked on the migration to micro services (written in Scala)']}
                     company='Rakuten France'
-                    techs={['Java']}/>
+                    techs={['Java', 'Scala', 'ElasticSearch']}/>
         <Experience duration={{'start' : 'Sept. 2022', 'end' : 'July 2023'}}
                     title='Teaching Assistant (ACDC)'
                     description={['Teaching Computer Science and Programming to first year students.',

@@ -12,6 +12,11 @@ body {
   background-color: var(--background);
 }
 
+#root {
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

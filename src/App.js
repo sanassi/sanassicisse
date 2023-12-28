@@ -12,17 +12,19 @@ import About from "./About";
 function App() {
   return (
     <div className="App">
-      <div className="side-bar">
-        <Me />
-        <SideNavBar/>
-        <Links />
-      </div>
-      <div className="main">
-        <About/>
-        <Experiences/>
-        <Projects/>
-        <SpotifyEmbed src="https://open.spotify.com/embed/track/7ihVeKd4RjiZ3y12nDhPZO?utm_source=generator&theme=0"/>
-      </div>
+       <div className="main-content">
+          <div className="side-bar">
+             <Me />
+             <SideNavBar/>
+             <Links />
+          </div>
+          <div className="main">
+             <About/>
+             <Experiences/>
+             <Projects/>
+             <SpotifyEmbed src="https://open.spotify.com/embed/track/7ihVeKd4RjiZ3y12nDhPZO?utm_source=generator&theme=0"/>
+          </div>
+       </div>
 
       <footer>Built by Sanassi Mory Cissé</footer>
     </div>

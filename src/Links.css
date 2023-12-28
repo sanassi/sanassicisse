@@ -3,5 +3,5 @@
 }
 
 .Links a {
-    color: inherit;
+    color: var(--text-color);
 }

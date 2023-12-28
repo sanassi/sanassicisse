@@ -6,5 +6,8 @@
     color: var(--text-color);
     font-size: 40px;
     font-weight: bold;
-    padding-bottom: 0.5em;
+}
+
+.my-job {
+    color: var(--text-color);
 }

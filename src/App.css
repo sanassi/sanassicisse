@@ -14,7 +14,7 @@
   height: 100%;
 
   position: fixed;
-  width: 30%;
+  width: 25em;
 
   display: flex;
   flex-direction: column;
@@ -22,7 +22,7 @@
 }
 
 .main {
-  margin-left: 30%;
+  margin-left: 25em;
   padding: 0 10px;
 }
 

@@ -34,10 +34,16 @@ export default function Projects() {
                        "url":"https://github.com/sanassi/pixelart-react"}} />
         <ProjectInfo name="Portfolio Website"
                      lang={["ReactJS"]}
-                     description={["First iteration of my portfolio website"]}
+                     description={["First iteration of my portfolio website (this!)"]}
                      link={{
                        "site":"github",
                        "url":"https://github.com/sanassi/sanassicisse"}} />
+         <ProjectInfo name="Punto"
+                      lang={["ReactJS", "Socket.IO", "ExpressJS"]}
+                      description={["Punto Board Game", "Multiplayer handled with Socket.IO (2 to 4 players)"]}
+                      link={{
+                         "site":"github",
+                         "url":"https://github.com/sanassi/punto"}} />
       </div>
     </div>
   );

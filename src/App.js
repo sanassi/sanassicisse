@@ -22,7 +22,7 @@ function App() {
              <About/>
              <Experiences/>
              <Projects/>
-             <SpotifyEmbed src="https://open.spotify.com/embed/track/1sWYVBg7ix2WAq43J9nY7E?utm_source=generator&theme=0"/>
+             <SpotifyEmbed src="https://open.spotify.com/embed/track/141hcjVM8lNPxi4wjNLgdX?utm_source=generator"/>
           </div>
        </div>
 

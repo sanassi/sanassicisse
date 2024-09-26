@@ -1,6 +1,6 @@
 import './About.css'
 export default function About() {
-  let text = ['I am a 21 year old Computer Science Student at Epita Paris.',
+  let text = ['I am a 22 year old Computer Science Student at Epita Paris.',
      'I am currently majoring in Embedded and Realtime Systems.',
      'I enjoy playing / watching basketball and learning to play the electric guitar.'];
   return (

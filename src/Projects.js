@@ -19,13 +19,13 @@ export default function Projects() {
                      link={{
                        "site":"gitlab",
                        "url":"https://gitlab.com/sanassi/rash"}} />
-        <ProjectInfo name="Red Panda"
+        { /* <ProjectInfo name="Red Panda"
                      lang={["Java", "JavaFX"]}
                      description={['IDE for beginners',
                        'With features such as: Autocomplete, Syntax Highlighting.']}
                      link={{
                        "site":"github",
-                       "url":"https://github.com/sanassi/red-panda"}} />
+                       "url":"https://github.com/sanassi/red-panda"}} /> */}
         <ProjectInfo name="PixElArt"
                      lang={["Javascript", "React"]}
                      description={['Pixel Art Editor', 'Built with ReactJS']}

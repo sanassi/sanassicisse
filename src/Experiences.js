@@ -11,7 +11,7 @@ export default function Experiences() {
       <div className="experiences">
         <Experience duration={{'start' : 'Sept. 2024', 'end' : 'Present'}}
                     title='Teaching Assistant (ACU)'
-                    description={['In charge of the 42sh project. (4-week project for 3rd year students in C).', 'Still teaching and assisting students in programming activites.']}
+                    description={['In charge of the 42sh project. (4-week project for 3rd year students in C).', 'Still teaching and assisting students in programming activities.']}
                     company='Epita'
                     techs={['C', 'Shell']}/>
         <Experience duration={{'start' : 'Jan. 2024', 'end' : 'July 2024'}}

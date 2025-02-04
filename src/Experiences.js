@@ -32,12 +32,19 @@ export default function Experiences() {
                     company='Epita Paris'
                     techs={['C#']}/>
       </div>
-      <div className='resume-link'>
-        <a href={process.env.PUBLIC_URL + '/sanassi_cv_ing1_en.pdf'}>
-          Open Full Résumé
-          <OpenInNewIcon />
-        </a>
-      </div>
+	<div>
+	  {
+		  /*
+	      <div className='resume-link'>
+		<a href={process.env.PUBLIC_URL + '/sanassi_cv_ing1_en.pdf'}>
+		  Open Full Résumé
+		  <OpenInNewIcon />
+		</a>
+	      </div>
+	      */
+	  }
+	</div>
+
     </div>
   );
 };

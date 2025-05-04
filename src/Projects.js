@@ -4,7 +4,7 @@ import './Projects.css'
 export default function Projects() {
   return (
     <div id='projects'>
-      <label className='project-label'>Projects</label>
+      <label className='project-label'>Fun Projects</label>
       <div className="projects">
         <ProjectInfo name="Tiger Compiler Backend"
                      lang={["C++"]}

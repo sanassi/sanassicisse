@@ -9,7 +9,12 @@ export default function Experiences() {
     <div id='experiences'>
       <label className='experience-label'>Experience</label>
       <div className="experiences">
-        <Experience duration={{'start' : 'Sept. 2024', 'end' : 'Present'}}
+        <Experience duration={{'start' : 'Feb. 2025', 'end' : 'Present'}}
+                    title='Software Engineer Intern'
+                    description={['AWS Integration Team', 'Crawl logs and resources from clients\' AWS services.', 'Optimize the crawler\'s generated code, to minimize unecessary operations.']}
+                    company='Datadog'
+                    techs={['Go', 'AWS']}/>
+        <Experience duration={{'start' : 'Sept. 2024', 'end' : 'Jan. 2025'}}
                     title='Teaching Assistant (ACU)'
                     description={['In charge of the 42sh project. (4-week project for 3rd year students in C).', 'Still teaching and assisting students in programming activities.']}
                     company='Epita'

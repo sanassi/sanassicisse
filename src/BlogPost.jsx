@@ -4,6 +4,7 @@ import ReactMarkdown from "react-markdown";
 import fm from "front-matter";
 
 import "./BlogPost.css";
+import { Link } from "react-router-dom";
 
 function BlogPost() {
   const { slug } = useParams();
@@ -26,7 +27,8 @@ function BlogPost() {
   if (!post) return <p>Loading...</p>;
 
   return (
-    <div>
+    <div className="blog-post-container">
+      <Link to={"/blog"}>Back</Link>
       <h1 className="text-2xl font-bold mb-2">{post.title}</h1>
       <p className="text-gray-500">{post.date}</p>
       <ReactMarkdown>{post.body}</ReactMarkdown>

@@ -1,34 +1,38 @@
-body {
+/* Scoped to BlogPost component */
+.blog-post-container {
   background-color: #121212; /* dark background */
-  color: #e0e0e0;           /* light text for readability */
+  color: #e0e0e0;            /* light text for readability */
   font-family: 'Inter', sans-serif;
   line-height: 1.6;
-  margin: 0;
-  padding: 0;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  color: #ffffff;
-}
-
-a {
-  color: #4fc3f7;       /* light blue links */
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-  color: #81d4fa;       /* slightly brighter on hover */
-}
-
-.blog-post, .main-content {
-  background-color: #1e1e1e;  /* slightly lighter than body */
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
-pre, code {
+/* Headings inside BlogPost */
+.blog-post-container h1,
+.blog-post-container h2,
+.blog-post-container h3,
+.blog-post-container h4,
+.blog-post-container h5,
+.blog-post-container h6 {
+  color: #ffffff;
+}
+
+/* Links */
+.blog-post-container a {
+  color: #4fc3f7;
+  text-decoration: none;
+}
+
+.blog-post-container a:hover {
+  text-decoration: underline;
+  color: #81d4fa;
+}
+
+/* Code blocks */
+.blog-post-container pre,
+.blog-post-container code {
   background-color: #2c2c2c;
   color: #f5f5f5;
   padding: 0.3rem 0.5rem;
@@ -36,12 +40,15 @@ pre, code {
   font-family: 'Source Code Pro', monospace;
 }
 
-ul, ol {
+/* Lists */
+.blog-post-container ul,
+.blog-post-container ol {
   color: #e0e0e0;
   padding-left: 1.5rem;
 }
 
-footer {
+/* Optional: footer inside blog-post (if needed) */
+.blog-post-container footer {
   color: #aaaaaa;
   text-align: center;
   padding: 1rem;

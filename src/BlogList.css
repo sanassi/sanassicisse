@@ -1,0 +1,55 @@
+.blog-list-container {
+  background-color: #121212; /* dark background */
+  color: #e0e0e0;            /* light text */
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+/* Headings inside blog list */
+.blog-list-container h1,
+.blog-list-container h2,
+.blog-list-container h3,
+.blog-list-container h4,
+.blog-list-container h5,
+.blog-list-container h6 {
+  color: #ffffff;
+}
+
+/* Links */
+.blog-list-container a {
+  color: #4fc3f7;
+  text-decoration: none;
+}
+
+.blog-list-container a:hover {
+  text-decoration: underline;
+  color: #81d4fa;
+}
+
+/* Lists */
+.blog-list-container ul,
+.blog-list-container ol {
+  color: #e0e0e0;
+  padding-left: 1.5rem;
+}
+
+/* Optional code blocks inside blog list */
+.blog-list-container pre,
+.blog-list-container code {
+  background-color: #2c2c2c;
+  color: #f5f5f5;
+  padding: 0.3rem 0.5rem;
+  border-radius: 6px;
+  font-family: 'Source Code Pro', monospace;
+}
+
+/* Optional footer inside blog list */
+.blog-list-container footer {
+  color: #aaaaaa;
+  text-align: center;
+  padding: 1rem;
+}
+

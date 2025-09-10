@@ -12,7 +12,7 @@ function BlogList() {
         Object.keys(files).map(async (path) => {
           const raw = await files[path]();
           //const { data } = matter(raw);
-          const { attributes, body } = fm(raw);
+          const { attributes } = fm(raw);
           const slug = path.split("/").pop().replace(".md", "");
           return { ...attributes, slug };
         }),

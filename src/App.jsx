@@ -11,6 +11,7 @@ import Experiences from "./Experiences";
 import About from "./About";
 import BlogPost from "./BlogPost";
 import BlogList from "./BlogList";
+import Photos from "./Photos";
 
 import {
   HashRouter as Router,
@@ -46,6 +47,7 @@ function App() {
         <Route path="/resume" element={<ResumePage />} />
         <Route path="/blog" element={<BlogList />} />
         <Route path="/blog/:slug" element={<BlogPost />} />
+        <Route path="/photos" element={<Photos />} />
       </Routes>
 
       <footer>Built by Sanassi Mory Cissé</footer>

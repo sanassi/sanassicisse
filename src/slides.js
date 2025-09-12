@@ -1,7 +1,7 @@
 // breakpoints for srcSet (optional)
 const breakpoints = [3840, 1920, 1080, 640, 384, 256, 128];
 
-const modules = import.meta.glob("/public/photos/*.{jpg,jpeg,png,gif}", {
+const modules = import.meta.glob("/public/photos/*.{jpg,jpeg,png,gif,JPEG}", {
   eager: true,
 });
 
@@ -20,11 +20,11 @@ function getSlide(asset) {
         src: imageLink(asset),
         width,
         height,
-        srcSet: breakpoints.map((bp) => ({
+        /*srcSet: breakpoints.map((bp) => ({
           src: imageLink(asset),
           width: bp,
           height: Math.round((height / width) * bp),
-        })),
+        })),*/
       });
     };
     img.src = asset;

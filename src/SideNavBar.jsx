@@ -14,7 +14,7 @@ export default function SideNavBar() {
         PROJECTS
       </Link>
       <Link to="/blog">BLOG</Link>
+      <Link to="/photos">PHOTOS</Link>
     </div>
   );
 }
-

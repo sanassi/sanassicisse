@@ -3,6 +3,8 @@ title: "Writing a fullstack web app with Go and React"
 date: "2025-09-18"
 ---
 
+[GitLab repository](https://gitlab.com/sanassi/ff-manager).
+
 # Motivation
 
 As I find myself looking for an entry level Software Engineer position, I wanted
@@ -19,9 +21,9 @@ Therefore I went in deadset on using Go for the backend of this project.
 I don't have a specific technical reason for choosing React for the frontend. I have built a few projects
 using React, and it was intuitive and I was able to sketch UIs relatively fast.
 
-The finality of this project would be to host it on AWS and make it available for other users.
+The finality of this project is to host it on AWS and make it available for other users.
 Why AWS ? Perhaps recency bias, I interned at Datadog in the `AWS Integrations` team. Also AWS skills are
-quite marketable in today's job market. I will attempt to only use the free tier features, it should
+highly marketable in today's job market. I will attempt to only use the free tier features, it should
 be enough for a "student" project.
 
 ---
@@ -92,7 +94,7 @@ enabled, err := ffClient.IsEnabled(context.Background(),
                                     })
 ```
 
-## High level Design
+## High Level Design
 
 The goal of this app is to be used by multiple users.
 Users can create and modify flags.
@@ -123,3 +125,5 @@ Go application to evaluate the feature flag rules.
 It it a REST API built with Go Gin.
 Since the application is read-heavy, I use Redis as a cache to store the feature flags that were previously read.
 In case of cache misses, the application will hit the primary Postgres DB, to get a flag.
+
+The runtime is alerted that a feature flag was modified in the backend using a Redis `PubSub` channel. Then the flag is removed from the runtime cache.

@@ -25,4 +25,17 @@ quite marketable in today's job market. I will attempt to only use the free tier
 be enough for a "student" project.
 
 ---
-# Feature flags
+# Feature Flags
+
+notes: 
+
+1 - explain why ff, extensively used at DD in production code
+
+2 - useful to dynamically alter the behavior of a program
+
+3 - can be powerful if we could control the percentage of users for which a feature flag is enabled
+
+4 - the behavior is straightforward, but can lead to interesting implementation problems
+
+---
+# Design

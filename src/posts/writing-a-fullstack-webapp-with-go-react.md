@@ -20,22 +20,106 @@ I don't have a specific technical reason for choosing React for the frontend. I 
 using React, and it was intuitive and I was able to sketch UIs relatively fast.
 
 The finality of this project would be to host it on AWS and make it available for other users.
-Why AWS ? Perhaps recency bias, I interned at Datadog in the AWS Integrations team. Also AWS skills are
+Why AWS ? Perhaps recency bias, I interned at Datadog in the `AWS Integrations` team. Also AWS skills are
 quite marketable in today's job market. I will attempt to only use the free tier features, it should
 be enough for a "student" project.
 
 ---
 # Feature Flags
 
-notes: 
+A Feature flag is useful to dynamically control the behavior of a program without altering the source code.
+It can be used using an `if/else` logic, to check if a new feature is enabled.
 
-1 - explain why ff, extensively used at DD in production code
+```go
+if isEnabled(flag) {
+    /* new feature code */
+} else {
+    /* previous implementation */
+}
+```
 
-2 - useful to dynamically alter the behavior of a program
+It can be implemented using configuration property files, using a key/value format to define if a feature is enabled:
 
-3 - can be powerful if we could control the percentage of users for which a feature flag is enabled
+```
+darkThemeEnabled=false
+optimizeDataFetch=true
+```
 
-4 - the behavior is straightforward, but can lead to interesting implementation problems
+However this approach is quite limited, for example if we wanted to add more conditions for enabling the dark theme here, we would have to update the code.
+
+A good feature flagging system should be able to determine if a feature is enabled given variables, that way the specific cases for which a flag should be enabled could be controlled.
 
 ---
-# Design
+
+# Implementation
+
+## Flag Definition
+
+For that we need to add a `rule` when defining a flag, ie. a combination of conditions that need to be met for a feature to be enabled.
+
+A rule condition is basic:
+
+```
+type Condition struct {
+    VarName *string `json:"varName"`
+    Op      *string `json:"op"`
+    Type    string  `json:"type"`
+    Str     *string `json:"str"` 
+    Int     *int    `json:"int"`
+    Arr     *[]any  `json:"arr"`
+}
+```
+
+It takes the name of a variable, an operation, and value placeholders based on the type of the variable:
+
+```json
+// Dark Theme Flag Condition
+{
+    varName: "userId",
+    op: "IN",
+    type: "Int",
+    arr: [4242, 6767]
+}
+```
+
+Then on the user code, variables are passed in a request to the feature flag system, to check if a feature is enabled.
+
+```go
+enabled, err := ffClient.IsEnabled(context.Background(), 
+                                    "darkThemeEnabled", 
+                                    map[string]any{
+                                        "userId": 4242
+                                    })
+```
+
+## High level Design
+
+The goal of this app is to be used by multiple users.
+Users can create and modify flags.
+
+I've split the project in 3 different applications, and added support for user authentication.
+
+
+### Auth
+I use Okta's `Auth0` for user authentication. Using the free tier I have access to basic authentication features for my apps.
+
+### Frontend
+
+React Single Page Application to perform CRUD operation on feature flags.
+Allows users to login, display existing flags, update/create flags by asking for approval from another user.
+
+### Backend
+
+Go application that handles the CRUD operations of feature flags.
+It is a REST service built with Go Chi Router.
+The feature flag data is stored in a Postgres database.
+This database is the source of truth for feature flags.
+
+Most requests to the backend need to be authenticated.
+
+### Runtime
+
+Go application to evaluate the feature flag rules.
+It it a REST API built with Go Gin.
+Since the application is read-heavy, I use Redis as a cache to store the feature flags that were previously read.
+In case of cache misses, the application will hit the primary Postgres DB, to get a flag.

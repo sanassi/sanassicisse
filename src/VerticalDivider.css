@@ -1,0 +1,6 @@
+.vertical-divider {
+  width: 1px;
+  background-color: #333; /* adjust to match theme */
+  height: 100%;           /* fill available height */
+}
+

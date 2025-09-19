@@ -57,16 +57,16 @@
 /* --- Tree view layout --- */
 .blog-layout {
   display: grid;
-  grid-template-columns: 220px 1fr; /* sidebar + content */
+  grid-template-columns: 220px 1px 1fr; /* sidebar | divider | content */
   gap: 2rem;
-  align-items: start; /* keeps sidebar aligned at top */
+  align-items: stretch; /* makes divider stretch */
 }
 
 /* Sidebar */
 .blog-sidebar {
   padding: 1rem;
   border-radius: 8px;
-  background-color: #1a1a1a;
+  /*background-color: #1a1a1a;*/
   max-height: 90vh;
   overflow-y: auto;
 

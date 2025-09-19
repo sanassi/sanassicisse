@@ -5,6 +5,7 @@ import fm from "front-matter";
 import { Link } from "react-router-dom";
 
 import "./BlogPost.css";
+import VerticalDivider from "./VerticalDivider";
 
 function buildHeadingsTree(markdown) {
   const lines = markdown.split("\n");
@@ -92,6 +93,8 @@ function BlogPost() {
         <h3>On this page</h3>
         <Tree nodes={headings} />
       </aside>
+
+      <VerticalDivider />
 
       {/* Blog Content */}
       <div className="blog-post-container">

@@ -3,9 +3,6 @@
     display: flex;
     flex: auto;
     flex-direction: row;
-    justify-content: space-between;
-    /*padding-bottom: 2em;*/
-
     padding: 0.5em;
 }
 
@@ -14,42 +11,47 @@
     border-radius: 8px;
 }
 
-.experience-duration {
-    color: var(--secondary-text);
-    width: 14em;
-    flex-wrap: nowrap;
-}
-
 .experience-title {
     font-size: 17px;
     font-weight: bold;
+    color: var(--text-color);
 }
 
 .experience-company {
     color: var(--secondary-text);
 }
 
-.experience-title {
-    color: var(--text-color);
+.experience-duration {
+    color: var(--secondary-text);
+    font-size: 14px;
+    margin-bottom: 0.5em;
 }
 
 .experience-techs {
     color: var(--emph-text-color);
     display: flex;
-    flex: auto;
-    flex-direction: row;
-    padding-right: 2em;
-}
-
-.experience-techs div {
-    padding-right: 1em;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    padding-top: 0.5em;
 }
 
 .experience-description {
     display: flex;
-    flex: auto;
+    flex: 1;
     flex-direction: column;
-    justify-content: space-between;
-    width: fit-content;
-    padding-left: 2em;
+    justify-content: flex-start;
+    width: auto;
 }
+
+/* 📱 Responsive: make text full width on small devices */
+@media (max-width: 768px) {
+    .experience {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .experience-description {
+        width: 100%;
+    }
+}
+

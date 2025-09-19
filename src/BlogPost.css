@@ -106,3 +106,18 @@
   color: #81d4fa;
 }
 
+@media (max-width: 768px) {
+  .blog-layout {
+    grid-template-columns: 1fr; 
+    gap: 0; 
+  }
+
+  .blog-sidebar,
+  .vertical-divider {
+    display: none; 
+  }
+
+  .blog-post-container {
+    padding: 1rem;
+  }
+}

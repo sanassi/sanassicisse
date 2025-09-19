@@ -1,12 +1,12 @@
 /* Scoped to BlogPost component */
 .blog-post-container {
-  background-color: #121212; /* dark background */
+  /* background-color: #121212;*/ /* dark background */
   color: #e0e0e0;            /* light text for readability */
   font-family: 'Inter', sans-serif;
   line-height: 1.6;
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  /*box-shadow: 0 0 10px rgba(0,0,0,0.5);*/
 }
 
 /* Headings inside BlogPost */
@@ -52,5 +52,57 @@
   color: #aaaaaa;
   text-align: center;
   padding: 1rem;
+}
+
+/* --- Tree view layout --- */
+.blog-layout {
+  display: grid;
+  grid-template-columns: 220px 1fr; /* sidebar + content */
+  gap: 2rem;
+  align-items: start; /* keeps sidebar aligned at top */
+}
+
+/* Sidebar */
+.blog-sidebar {
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: #1a1a1a;
+  max-height: 90vh;
+  overflow-y: auto;
+
+  /* Sticky behavior */
+  position: sticky;
+  top: 1rem;
+}
+
+/* Sidebar title */
+.blog-sidebar h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #4fc3f7;
+}
+
+/* Tree structure */
+.tree-list {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+.tree-list li {
+  margin: 0.25rem 0;
+}
+
+.tree-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #e0e0e0;
+  text-align: left;
+  padding: 0.2rem;
+  font-size: 0.9rem;
+}
+
+.tree-button:hover {
+  color: #81d4fa;
 }
 

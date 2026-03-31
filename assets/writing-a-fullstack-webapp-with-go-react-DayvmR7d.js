@@ -27,6 +27,7 @@ highly marketable in today's job market. I will attempt to only use the free tie
 be enough for a "student" project.
 
 ---
+
 # Feature Flags
 
 A Feature flag is useful to dynamically control the behavior of a program without altering the source code.
@@ -66,7 +67,7 @@ type Condition struct {
     VarName *string \`json:"varName"\`
     Op      *string \`json:"op"\`
     Type    string  \`json:"type"\`
-    Str     *string \`json:"str"\` 
+    Str     *string \`json:"str"\`
     Int     *int    \`json:"int"\`
     Arr     *[]any  \`json:"arr"\`
 }
@@ -77,18 +78,18 @@ It takes the name of a variable, an operation, and value placeholders based on t
 \`\`\`json
 // Dark Theme Flag Condition
 {
-    varName: "userId",
-    op: "IN",
-    type: "Int",
-    arr: [4242, 6767]
+  "varName": "userId",
+  "op": "IN",
+  "type": "Int",
+  "arr": [4242, 6767]
 }
 \`\`\`
 
 Then on the user code, variables are passed in a request to the feature flag system, to check if a feature is enabled.
 
 \`\`\`go
-enabled, err := ffClient.IsEnabled(context.Background(), 
-                                    "darkThemeEnabled", 
+enabled, err := ffClient.IsEnabled(context.Background(),
+                                    "darkThemeEnabled",
                                     map[string]any{
                                         "userId": 4242
                                     })
@@ -101,8 +102,8 @@ Users can create and modify flags.
 
 I've split the project in 3 different applications, and added support for user authentication.
 
-
 ### Auth
+
 I use Okta's \`Auth0\` for user authentication. Using the free tier I have access to basic authentication features for my apps.
 
 ### Frontend

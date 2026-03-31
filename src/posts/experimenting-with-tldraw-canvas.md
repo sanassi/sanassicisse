@@ -7,6 +7,8 @@ date: "2026-02-25"
 
 `tldraw` is a useful and highly customizable infinite canvas React component and React SDK.
 
+You can try it here: [`Project Link`](https://infinite-canvas.sanassicisse.workers.dev/).
+
 # App Idea
 
 Took inspiration from Reddit's `r/place` [link](https://www.reddit.com/r/place/).

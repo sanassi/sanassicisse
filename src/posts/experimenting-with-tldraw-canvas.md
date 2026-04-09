@@ -146,3 +146,65 @@ Maybe next time I'll look into using a self-hosted authentication service, or ma
 This was super fun to do and took around 2 weeks to complete (I mean to have an MVP) (I also took a ton of breaks).
 
 It would have been more challenging to reimplement the canvas myself, but TlDraw was so nice to use that I don't really mind. Also, they give out Hobby licenses pretty quickly, so thanks to them.
+
+# Not done yet...
+
+I thought I was done with this project but I can still have fun with it.
+
+## Activity/News feed
+
+I want to add a news/activity feed system to my app.
+Ex:
+
+- new artwork created
+- new user subscribed
+- downvotes/upvotes
+
+---
+
+### Design Ideas
+
+#### Persist in current Postgres DB
+
+- Add a `LastLogIn` timestamp in the User table.
+- Add a new DB table: `Activity`.
+- Create `ActivityType` class.
+- When activity triggered, write in DB `ActivityType`, including timestamp.
+- On frontend, load activities that took place after the user last logged in.
+  - Add the option to load more on click.
+
+Pros:
+
+- straightforward and "easy" to implement.
+- requires minimal (one: add last login column) update to an existing table (Users).
+
+Cons:
+
+- Scaling issues:
+  - Table size proportional to the \# of users, and events.
+- Old events persist in DB, will have to be removed using background script.
+
+#### Interval based caching
+
+Store in an in-memory cache (no need to use an external Redis instance or whatever else) events that took place in a given interval (between 2 timestamps).
+Add a TTL to expire older events stored in the cache.
+
+Pros:
+
+- Lower memory footprint NOW for the current interval (but will grow with more users, assuming an active community).
+  - Can be reduced with an appropriate TTL value.
+
+Cons:
+
+- Data is lost on application restarts.
+  - Not critical since the data is volatile (no other system depends on it).
+  - But can make the user experience worse.
+- Increase runtime memory usage, consequently Fly.io bill.
+- Thread safety:
+  - Given the cache storage structure, ex store a list of events for an interval, race conditions might happen, generating data corruption.
+    - A solution might be to use a messaging queue system, need to learn more about it.
+- Fly.io deployment strategy:
+  - Launching multiple instances of my app can create inconsistent caching and thus a messy feed.
+- Pagination will become a mess ?
+
+> [!error] Conclusion: Not good here...

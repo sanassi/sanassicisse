@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import ReactMarkdown from "react-markdown";
+import SyntaxHighlighter from "react-markdown";
 import fm from "front-matter";
 import { Link } from "react-router-dom";
 
@@ -121,6 +122,26 @@ function BlogPost() {
                 {...props}
               />
             ),
+            /*
+            code: ({ node, className, children, ...props }) => {
+              if (node.properties.inline)
+                return <code {...props}>{children}</code>;
+
+              console.log(node.properties.inline);
+              console.log("made it here, should not happen");
+
+              const value = String(children).replace(/\n$/, "");
+
+              if (className === "language-callout")
+                return <Callout>{value}</Callout>;
+
+              return (
+                <SyntaxHighlighter language={"typescript"}>
+                  {value}
+                </SyntaxHighlighter>
+              );
+            },
+            */
           }}
         >
           {post.body}

@@ -1,0 +1,45 @@
+---
+title: "Building a code execution engine (kind of like the Go Playground website)"
+date: "2026-05-09"
+---
+
+# Links
+
+GitHub [Repository](https://github.com/sanassi/rem).
+
+# Motivation
+
+I want to get back to writing interpreters and designing toy programming languages. However it is not always
+easy to test out the languages during interviews (having to open the repo, launch commands and stuff).
+So I have decided to build something similar to the [**Go Playground**](https://go.dev/play/) website, but
+for my custom domain specific languages.
+
+Small excerpt from the page:
+
+> The Go Playground is a web service that runs on go.dev's servers.
+> The service receives a Go program, vets, compiles, links, and runs the program inside a sandbox, then returns the output.
+
+I want it to be simple (no user login, or long sessions or whatever), and mostly mimic what Playground does. Also display
+syntax/grammar information about the languages.
+
+Of course since this is also a learning experience, I won't look **too much** at the Playground source code. :)
+
+I'll think about extending the features later, to support user login, and perhaps saving previous programs for logged users, we'll see.
+
+I'll be working with Go, and React.
+
+# Brainstorm + MVP First Implem
+
+I use Docker to provide a sandboxed environment with minimal features to execute the client's scripts.
+The [`Moby Project`](https://github.com/moby/moby) provides a Go api to programmatically create Docker containers.
+
+The app starts as an HTTP server, built on top of [Go Gin](https://github.com/gin-gonic/gin).
+The main endpoint is a POST `/run`, that accepts a script to run, for testing purposes the app only accepts Python scripts for now.
+
+On each call to the `/run` endpoint, a Docker container is created ([docs](https://github.com/moby/moby/blob/master/client/container_create.go)), with a Python image, a folder is created in `/tmp` to store the Python script, per user request.
+
+When the container is started ([docs](https://github.com/moby/moby/blob/master/client/container_create.go)), the script is executed using the container CMD command.
+
+I use an client method to extract the logs ([docs](https://github.com/moby/moby/blob/master/client/container_logs.go)) from the container, on stdout and stderr.
+
+Then I wait until the state of the container changes to `Not Running` ([docs](https://github.com/moby/moby/blob/master/client/container_wait.go)).

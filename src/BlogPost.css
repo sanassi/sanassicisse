@@ -1,8 +1,8 @@
 /* Scoped to BlogPost component */
 .blog-post-container {
   /* background-color: #121212;*/ /* dark background */
-  color: #e0e0e0;            /* light text for readability */
-  font-family: 'Inter', sans-serif;
+  color: #e0e0e0; /* light text for readability */
+  font-family: "Inter", sans-serif;
   line-height: 1.6;
   padding: 2rem;
   border-radius: 12px;
@@ -37,7 +37,7 @@
   color: #f5f5f5;
   padding: 0.3rem 0.5rem;
   border-radius: 6px;
-  font-family: 'Source Code Pro', monospace;
+  font-family: "Source Code Pro", monospace;
 }
 
 /* Lists */
@@ -106,15 +106,19 @@
   color: #81d4fa;
 }
 
+img {
+  max-width: 70%;
+}
+
 @media (max-width: 768px) {
   .blog-layout {
-    grid-template-columns: 1fr; 
-    gap: 0; 
+    grid-template-columns: 1fr;
+    gap: 0;
   }
 
   .blog-sidebar,
   .vertical-divider {
-    display: none; 
+    display: none;
   }
 
   .blog-post-container {

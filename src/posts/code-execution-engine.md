@@ -5,12 +5,12 @@ date: "2026-05-09"
 
 # Links
 
-GitHub [Repository](https://github.com/sanassi/rem).
+GitHub [Repository](https://github.com/sanassi/rem) (if it's still private it's because I'm not ready to show it yet).
 
 # Motivation
 
 I want to get back to writing interpreters and designing toy programming languages. However it is not always
-easy to test out the languages during interviews (having to open the repo, launch commands and stuff).
+easy to test out the languages during interviews (having to open the repo, compile, launch commands and stuff).
 So I have decided to build something similar to the [**Go Playground**](https://go.dev/play/) website, but
 for my custom domain specific languages.
 
@@ -80,3 +80,15 @@ The app will create and start a container for each user request, mounting a temp
 user script to run. It will then start the container, wait for the state to change to `not-running`, capture the outputs and error code, and manually remove the container.
 
 ![v1 System Design](/public/rem-v1-svg-dark.svg "Interaction diagram")
+
+## Limitations
+
+A docker container is created per user request, meaning that `n` requests generate `n` mounts (although I've added a username parameter to reduce the number of folders for testing purposes), and `n` containers are executed.
+
+This does not scale well.
+
+A better implementation would be to have a fixed number of containers per language (kind of what Go playground does). User run requests will be added to a job queue, and workers will dequeue those jobs, run the client program in an available container and return the result.
+
+This new implementation will make it harder to manage the containers lifecycle, and looks a little challenging but that's fun.
+
+Also I still don't know how I will be deploying this yet, stay tuned gang.

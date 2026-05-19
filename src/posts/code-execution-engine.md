@@ -43,3 +43,40 @@ When the container is started ([docs](https://github.com/moby/moby/blob/master/c
 I use an client method to extract the logs ([docs](https://github.com/moby/moby/blob/master/client/container_logs.go)) from the container, on stdout and stderr.
 
 Then I wait until the state of the container changes to `Not Running` ([docs](https://github.com/moby/moby/blob/master/client/container_wait.go)), and return the outputs to the user.
+
+# v1
+
+The first version of the project is a config based multilanguage support code execution engine.
+Domain specific languages configurations are defined in YAML files:
+
+```yaml
+languages:
+  python:
+    image: python:latest
+    cmd:
+      - python
+      - script.in
+
+  tiger:
+    image: tiger-dsl:latest
+    cmd:
+      - sh
+      - -c
+      - /app/src/tc --target-ia32 -S script.in > file.s && gcc -m32 file.s -o a.out && ./a.out
+
+
+  evalexpr:
+    image: evalexpr:latest
+    cmd:
+
+. . .
+```
+
+A docker image is required to create a Docker container, along with a list of commands to execute the client script (ex: compile the program for compiled languages, or send file contents via `stdin`).
+
+> Note: here the docker images are built from personal/school projects, some that must remain private.
+
+The app will create and start a container for each user request, mounting a temporary folder containing the
+user script to run. It will then start the container, wait for the state to change to `not-running`, capture the outputs and error code, and manually remove the container.
+
+![v1 System Design](/public/rem-v1-svg-dark.svg "Interaction diagram")

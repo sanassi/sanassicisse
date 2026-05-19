@@ -36,10 +36,10 @@ The [`Moby Project`](https://github.com/moby/moby) provides a Go api to programm
 The app starts as an HTTP server, built on top of [Go Gin](https://github.com/gin-gonic/gin).
 The main endpoint is a POST `/run`, that accepts a script to run, for testing purposes the app only accepts Python scripts for now.
 
-On each call to the `/run` endpoint, a Docker container is created ([docs](https://github.com/moby/moby/blob/master/client/container_create.go)), with a Python image, a folder is created in `/tmp` to store the Python script, per user request.
+On each call to the `/run` endpoint, a Docker container is created ([docs](https://github.com/moby/moby/blob/master/client/container_create.go)), with a Python image, a folder is created in `/tmp` to store the Python script, per user request. In the container config, the folder is mounted to a `/tmp/sandbox` folder in the container, which will contain the client script. For cleanup the containers set to be deleted after the code is executed (at first via `AutoRemove: true` in the config, but I had to manually delete then in a `defer` statement, due to them being marked for delete, preventing the access to the logs).
 
 When the container is started ([docs](https://github.com/moby/moby/blob/master/client/container_create.go)), the script is executed using the container CMD command.
 
 I use an client method to extract the logs ([docs](https://github.com/moby/moby/blob/master/client/container_logs.go)) from the container, on stdout and stderr.
 
-Then I wait until the state of the container changes to `Not Running` ([docs](https://github.com/moby/moby/blob/master/client/container_wait.go)).
+Then I wait until the state of the container changes to `Not Running` ([docs](https://github.com/moby/moby/blob/master/client/container_wait.go)), and return the outputs to the user.

@@ -79,7 +79,7 @@ A docker image is required to create a Docker container, along with a list of co
 The app will create and start a container for each user request, mounting a temporary folder containing the
 user script to run. It will then start the container, wait for the state to change to \`not-running\`, capture the outputs and error code, and manually remove the container.
 
-![v1 System Design](/public/rem-v1-svg-dark.svg "Interaction diagram")
+![v1 System Design](rem-v1-svg-dark.svg "Interaction diagram")
 
 ## Limitations
 
